@@ -18,6 +18,10 @@ pip3 install -r /etc/odoo/requirements.txt
 apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
+        build-essential \
+        python3-dev \
+        libssl-dev \
+        swig \
 
 # Directorio de destino y versión de Odoo
 DEST_DIR="/mnt/extra-addons"
