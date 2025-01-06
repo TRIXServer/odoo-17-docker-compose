@@ -66,6 +66,8 @@ REPOS=(
   "https://github.com/OCA/web.git -b $ODOO_VERSION --single-branch"
   "https://github.com/OCA/reporting-engine.git -b $ODOO_VERSION --single-branch"
   "https://github.com/OCA/stock-logistics-workflow.git -b $ODOO_VERSION --single-branch"
+  "https://github.com/OCA/server-ux.git -b $ODOO_VERSION --single-branch"
+  "https://github.com/OCA/server-tools.git -b $ODOO_VERSION --single-branch"
 )
 
 echo "Clonando repositorios en $DEST_DIR..."
