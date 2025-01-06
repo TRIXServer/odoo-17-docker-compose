@@ -4,7 +4,7 @@ PORT=$2
 CHAT=$3
 
 # Clone Odoo directory
-git clone --depth=1 https://github.com/minhng92/odoo-17-docker-compose $DESTINATION
+git clone --depth=1 https://github.com/TRIXServer/odoo-17-docker-compose $DESTINATION
 rm -rf $DESTINATION/.git
 
 # Create PostgreSQL directory
@@ -42,8 +42,9 @@ fi
 # Set file and directory permissions after installation
 find $DESTINATION -type f -exec chmod 644 {} \;
 find $DESTINATION -type d -exec chmod 755 {} \;
+sudo chmod +x $DESTINATION/entrypoint.sh
 
 # Run Odoo
 docker-compose -f $DESTINATION/docker-compose.yml up -d
 
-echo "Odoo started at http://localhost:$PORT | Master Password: minhng.info | Live chat port: $CHAT"
+echo "Odoo started at http://localhost:$PORT | Live chat port: $CHAT"
