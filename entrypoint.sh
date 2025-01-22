@@ -124,6 +124,7 @@ fi
 
 pip3 install urllib3
 pip3 install chardet
+pip3 install pyopenssl==20.0.1
 
 DB_ARGS=()
 function check_config() {
