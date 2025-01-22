@@ -22,6 +22,7 @@ apt-get update && \
         python3-dev \
         libssl-dev \
         swig \
+        libffi-dev \
 
 # Directorio de destino y versión de Odoo
 DEST_DIR="/mnt/extra-addons"
@@ -122,7 +123,7 @@ if [ -n "$REQUIREMENTS_FILES" ]; then
   done
 fi
 
-pip3 install --upgrade pyopenssl cryptography
+pip3 install --upgrade pyopenssl cryptography urllib3
 
 DB_ARGS=()
 function check_config() {
