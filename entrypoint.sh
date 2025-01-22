@@ -101,8 +101,13 @@ for REPO in "${REPOS[@]}"; do
   fi
 done
 
-# Configurar addons_path
+# Generar la lista de rutas de addons
 ADDONS_PATHS=$(find "$DEST_DIR" -mindepth 2 -maxdepth 2 -type d | tr '\n' ',')
+
+# Eliminar la coma al final si existe
+ADDONS_PATHS=${ADDONS_PATHS%,}
+
+# Configurar addons_path en el archivo de configuración
 if grep -q "^addons_path" "$ODOO_CONF"; then
   sed -i "s|^addons_path *=.*|addons_path = /mnt/extra-addons,$ADDONS_PATHS|" "$ODOO_CONF"
 else
