@@ -122,9 +122,7 @@ if [ -n "$REQUIREMENTS_FILES" ]; then
   done
 fi
 
-pip3 install urllib3
-pip3 install chardet
-pip3 install pyopenssl==20.0.1
+pip3 install --upgrade pyopenssl cryptography
 
 DB_ARGS=()
 function check_config() {
