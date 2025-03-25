@@ -22,6 +22,7 @@ apt-get update && \
         python3-dev \
         libssl-dev \
         swig \
+        libffi-dev \
 
 # Directorio de destino y versión de Odoo
 DEST_DIR="/mnt/extra-addons"
@@ -101,8 +102,13 @@ for REPO in "${REPOS[@]}"; do
   fi
 done
 
-# Configurar addons_path
+# Generar la lista de rutas de addons
 ADDONS_PATHS=$(find "$DEST_DIR" -mindepth 2 -maxdepth 2 -type d | tr '\n' ',')
+
+# Eliminar la coma al final si existe
+ADDONS_PATHS=${ADDONS_PATHS%,}
+
+# Configurar addons_path en el archivo de configuración
 if grep -q "^addons_path" "$ODOO_CONF"; then
   sed -i "s|^addons_path *=.*|addons_path = /mnt/extra-addons,$ADDONS_PATHS|" "$ODOO_CONF"
 else
@@ -116,6 +122,8 @@ if [ -n "$REQUIREMENTS_FILES" ]; then
     pip3 install -r "$FILE" || echo "Error instalando desde $FILE"
   done
 fi
+
+pip3 install --upgrade pyopenssl cryptography urllib3
 
 DB_ARGS=()
 function check_config() {
