@@ -16,7 +16,7 @@ pip3 install -r /etc/odoo/requirements.txt
 # sed -i 's|raise werkzeug.exceptions.BadRequest(msg)|self.jsonrequest = {}|g' /usr/lib/python3/dist-packages/odoo/http.py
 
 apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
         git \
         build-essential \
         python3-dev \
