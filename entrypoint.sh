@@ -123,7 +123,7 @@ if [ -n "$REQUIREMENTS_FILES" ]; then
   done
 fi
 
-pip3 install --upgrade pyopenssl cryptography urllib3
+pip3 install --upgrade pyopenssl cryptography
 
 DB_ARGS=()
 function check_config() {
